@@ -6,29 +6,44 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+To use Python REST, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   (.venv) $ pip install pythonrest3
 
-Creating recipes
+Checking Version
 ----------------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+To retrieve the installed version,
+you can use the ``pythonrest version`` command:
 
-.. autofunction:: lumache.get_random_ingredients
+Generating the REST API
+-----------------------
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+Generate APIs based on MySQL databases:
 
-.. autoexception:: lumache.InvalidKindError
 
-For example:
+``pythonrest generate --mysql-connection-string mysql://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<SCHEMA>``
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+
+Generate APIs based on Postgres databases:
+
+``pythonrest generate --postgres-connection-string postgresql://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<DATABASE_NAME>?options=-c%20search_path=<SCHEMA>,public``
+
+Generate APIs based on SQLServer databases:
+
+``pythonrest generate --sqlserver-connection-string mssql://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<SCHEMA>``
+
+Generate APIs based on DariaDB databases:
+
+``pythonrest generate --mariadb-connection-string mariadb://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<SCHEMA>``
+
+Generate APIs based on Aurora MySQL databases:
+
+``pythonrest generate --mysql-connection-string mysql://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<SCHEMA>``
+
+Generate APIs based on Aurora Postgres databases:
+
+``pythonrest generate --postgres-connection-string postgresql://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<DATABASE_NAME>?options=-c%20search_path=<SCHEMA>,public``
 
