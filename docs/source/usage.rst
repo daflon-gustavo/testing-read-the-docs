@@ -258,3 +258,67 @@ If you wish to go deep and debug the API, or simply wishes to run from VSCode Py
            }
        ]
    }
+
+API Usage Examples
+~~~~~~~~~~~~~~~~~~
+
+After following the How to run section to its final steps, with your project running you can finally test the routes it creates, to follow the below examples, if you have a table named user, you would want to access localhost:5000/swagger/user to check the routes provided to that table.
+
+Select All Table Entries
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Starting with a basic use, you go to your swagger/, the first route is the get one, if you just hit "try it out" and then "execute", it will present you with a response equivalent to a SELECT * from query. If you wish to, you can use the available filters to select only the attributes that you want to retrieve, limit the number of results, paginate your results and so on. If you still did not have anything on your database to retrieve, it will just be an empty list, now we can get to our next use case to solve that!
+
+>> image - Swagger Select all Users
+
+Insert Table Entry
+^^^^^^^^^^^^^^^^^^
+
+From the same swagger page we were in, the next route is the post /, in which when you hit "try it out" it will present you with a sample JSON body to insert an entry on your table. The JSON body sent on the request is a list, so if you wish to you can provide multiple entries at once on table with the same request, below is an example of a request inserting three entries on a simple pre-designed USER table with 'id_user', 'username' and 'date_joined' fields:
+
+>> image - Swagger Insert User
+
+Example JSON payload:
+++++++++++++++++++++
+
+.. code-block::
+
+   [
+     {
+       "id_user": 1,
+       "username": "user1",
+       "date_joined": "2000-01-01 12:00:00"
+     },
+     {
+       "id_user": 2,
+       "username": "user2",
+       "date_joined": "2000-01-01 12:00:00"
+     },
+     {
+       "id_user": 3,
+       "username": "user3",
+       "date_joined": "2000-01-01 12:00:00"
+     }
+   ]
+
+
+Delete Table Entry
+^^^^^^^^^^^^^^^^^^
+
+Now we're talking about the delete /user route, if you hit "try it out" it will also present you with a sample JSON body of a generic object of your table, you can then use that example, modify its values to suit an entry that exists on your database. Note that this is a delete by full match route, so you need to provide the correct values for all of the table collumns on your response, below is an example of JSON body to delete a user table entry that has 3 columns: id_user, username and date_joined:
+
+>> image - Swagger Delete User
+
+.. code-block::
+
+   [
+     {
+       "id_user": 2,
+       "username": "user2",
+       "date_joined": "2000-01-01 12:00:00"
+     }
+   ]
+
+
+For more detailed examples, please check our `blog <https://medium.com/@seventechnologiescloud/>`_
+
