@@ -154,3 +154,85 @@ This behavior can be modified on the project's environment variables file(src/e_
 
 * "%Y-%m-%d, %d-%m-%Y, %Y/%m/%d, %d/%m/%Y" -> This value accepts dates on YYYY-MM-DD, DD-MM-YYYY, YYYY/MM/DD and DD/MM/YYYY formats
 * "%Y-%m-%d, %m-%d-%Y, %Y/%m/%d, %m/%d/%Y" -> This value accepts dates on YYYY-DD-MM, MM-DD-YYYY, YYYY/DD/MM and MM/DD/YYYY formats
+
+How to Run Generated API
+------------------------
+
+After generating your API, you may open it on your preferred IDE(VSCode, PyCharm, etc) or even the bash/cmd if you wish to, from there you may build your venv like below to run the project.
+
+How to Run with venv (Python virtual environment)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This project was initially built to run using a Python virtual environment, below we'll provide how to install the virtual environment and run the project on different systems:
+
+Windows(CMD/Powershell)
+^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Create the venv First of all, you should open this project on your terminal, from now on all the commands will be run from the root folder of the project. Below is the command to create a python venv:
+
+.. code-block::
+   
+   python -m venv venv
+
+2. Activate the virtual environment The below command is how to activate your venv for use on your current terminal session:
+
+.. code-block::
+
+   .\venv\Scripts\activate
+
+The command above works fine for CMD or Powershell. If you are using GitBash to run these commands, the only change would be running the below command instead of the above one:
+
+.. code-block::
+
+   source venv/Scripts/activate
+
+
+3. Install required libraries for API to run This project needs a number of libraries stored on PyPi to run, these are all listed on the requirements.txt file on the root folder of the generated project and to be installed you run the below command:
+
+.. code-block::
+   
+   pip install -r requirements.txt
+
+4. Run app.py After the libraries installation is complete, you can use the below command to run the project:
+
+.. code-block::
+
+   python app.py
+
+From there you can access the URL localhost:5000, which is the base endpoint to go to the project routes and make requests following the API Usage Examples section on this readme, our `blog <https://medium.com/@seventechnologiescloud/>`_ and our documentation here at `readthedocs <https://readthedocs.org/projects/pythonrest/>`_
+
+Linux/Mac(Bash/Zsh)
+^^^^^^^^^^^^^^^^^^^
+
+1. Create the venv: On Debian/Ubuntu systems, you need to have the python3-venv package installed, which you can do with the following commands:
+
+.. code-block::
+
+   apt-get update
+   apt install python3.8-venv
+
+And then you can create the venv with the following:
+
+.. code-block::
+
+   python3 -m venv venv
+
+2. Activate the virtual environment The below command is how to activate your venv for use on your current terminal session:
+
+.. code-block::
+   
+   source venv/bin/activate
+
+3. Install required libraries for API to run This project needs a number of libraries stored on PyPi to run, these are all listed on the requirements.txt file on the root folder of the generated project and to be installed you run the below command:
+
+.. code-block::
+   
+   pip install -r requirements.txt
+
+4. Run app.py After the libraries installation is complete, you can use the below command to run the project:
+
+.. code-block::
+   
+   python app.py
+
+From there you can access the URL localhost:5000, which is the base endpoint to go to the project routes and make requests following the API Usage Examples section on this readme, our `blog <https://medium.com/@seventechnologiescloud/>`_ and our documentation here at `readthedocs <https://readthedocs.org/projects/pythonrest/>`_
