@@ -12,13 +12,15 @@ Chocolatey
 ~~~~~~~~~~
 
 .. code-block::
-
+   :copy:
+   
    choco install pythonrest --version=0.1.0
 
 Pip
 ~~~~~~~~~~
 
 .. code-block::
+   :copy:
 
    pip install pythonrest3
 
@@ -30,12 +32,14 @@ As of now, pythonrest may fail on installation or present some errors when tryin
 1. Uninstall any version of pymssql if applicable:
 
 .. code-block::
+   :copy:
 
    pip uninstall pymssql
 
 2. Install necessary software libraries (using brew) to run pymssql:
 
 .. code-block::
+   :copy:
 
    brew install FreeTDS
    brew install openssl
@@ -43,6 +47,7 @@ As of now, pythonrest may fail on installation or present some errors when tryin
 3. Install and/or upgrade some pip libraries used to build pymssql library and used to run pymssql on the machine:
 
 .. code-block::
+   :copy:
 
    pip install --upgrade pip setuptools
    pip install cython --upgrade
@@ -52,6 +57,7 @@ As of now, pythonrest may fail on installation or present some errors when tryin
 4. Finally, install pymssql with the below commands:
 
 .. code-block::
+   :copy:
 
    export CFLAGS="-I$(brew --prefix openssl)/include"
    export LDFLAGS="-L$(brew --prefix openssl)/lib -L/usr/local/opt/openssl/lib"
