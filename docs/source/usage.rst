@@ -236,3 +236,24 @@ And then you can create the venv with the following:
    python app.py
 
 From there you can access the URL localhost:5000, which is the base endpoint to go to the project routes and make requests following the API Usage Examples section on this readme, our `blog <https://medium.com/@seventechnologiescloud/>`_ and our documentation here at `readthedocs <https://readthedocs.org/projects/pythonrest/>`_
+
+Run and Debug using venv with VSCode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you wish to go deep and debug the API, or simply wishes to run from VSCode Python extension, you'll want to configure a launch.json file for the API, to do that you'll go to the top bar of VSCode -> Run(if run is not visible, you may find it in the "..." on the title bar) -> Add Configuration. Doing that will generate your launch.json, in which you'll want to add a "python" key, similar to the example below:
+
+.. code-block::
+   {
+       "version": "0.2.0",
+       "configurations": [
+           {
+               "python": "${command:python.<full_path_to_your_venv_python_exe_file>}",
+               "name": "Python: Current File",
+               "type": "python",
+               "request": "launch",
+               "program": "${file}",
+               "console": "integratedTerminal",
+               "justMyCode": true
+           }
+       ]
+   }
