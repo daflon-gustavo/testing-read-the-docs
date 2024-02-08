@@ -243,6 +243,7 @@ Run and Debug using venv with VSCode
 If you wish to go deep and debug the API, or simply wishes to run from VSCode Python extension, you'll want to configure a launch.json file for the API, to do that you'll go to the top bar of VSCode -> Run(if run is not visible, you may find it in the "..." on the title bar) -> Add Configuration. Doing that will generate your launch.json, in which you'll want to add a "python" key, similar to the example below:
 
 .. code-block::
+   
    {
        "version": "0.2.0",
        "configurations": [
