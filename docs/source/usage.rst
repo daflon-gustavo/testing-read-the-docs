@@ -365,3 +365,80 @@ For example, a table user with id_user, username and date_joined fields would ha
        "date_joined": "2024-01-01 12:00:00"
      }
    ]'
+
+API Environment Variables
+-------------------------
+
+Generated API environment variables can be found on src/e_Infra/g_Environment/EnvironmentVariables.py and each one has the following utility:
+* **domain_like_left** – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "%COLUMN_VALUE" search behavior whenever it's value is defined on a query parameter.
+Example:
+    * Test
+    * 1Test
+    * NameTest
+    * Example-Test
+
+* **domain_like_right** – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "COLUMN_VALUE%" search behavior whenever it's value is defined on a query parameter.
+Example:
+    * Test
+    * Test1
+    * Test Name
+    * Test-Example
+
+* **domain_like_full** – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "%COLUMN_VALUE%" search behavior whenever a it's value is defined on a query parameter.
+Example:
+    * Test
+    * Test1
+    * TestName
+    * Test-Example
+    * 1Test
+    * NameTest
+    * Example-Test
+
+* **date_valid_masks** – Specifies the date formats accepted by the API. Valid values are:
+    * "%Y-%m-%d" - This value accepts dates on YYYY-MM-DD format
+    * "%d-%m-%Y" - This value accepts dates on DD-MM-YYYY format
+    * "%Y/%m/%d" - This value accepts dates on YYYY/MM/DD format
+    * "%d/%m/%Y" - This value accepts dates on DD/MM/YYYY format
+    * "%m-%d-%Y" - This value accepts dates on MM-DD-YYYY format
+    * "%m/%d/%Y" - This value accepts dates on MM/DD/YYYY format
+    Your end result can be a combination of two or more of the previous options, like the following examples:
+    * "%Y-%m-%d, %d-%m-%Y, %Y/%m/%d, %d/%m/%Y" This value accepts dates on YYYY-MM-DD, DD-MM-YYYY, YYYY/MM/DD and DD/MM/YYYY formats(default API generation behavior with us-datetimes set to false)
+    * "%Y-%m-%d, %m-%d-%Y, %Y/%m/%d, %m/%d/%Y" This value accepts dates on YYYY-MM-DD, MM-DD-YYYY, YYYY/MM/DD and MM/DD/YYYY formats(default API generation behavior with us-datetimes set to true)
+
+    ⚠️ Disclaimer
+    The previous behavior affects all fields from all database tables, is is not possible at this point to specify these rules for specific table columns
+
+* **time_valid_masks** – Specifies the time formats accepted by the API. Valid values are:
+    * "%H:%M:%S" This value accepts times on HH:MM:SS format
+    * "%I:%M:%S %p" This value accepts times on HH:MM:SS AM/PM format 
+    * "%H:%M" This value accepts times on HH:MM format
+    * "%I:%M %p" This value accepts times on HH:MM AM/PM format
+    * "%I:%M:%S%p" This value accepts times on HH:MM:SSAM/PM format
+    * "%I:%M%p" This value accepts times on HH:MMAM/PM format
+    Your end result can be a combination of two or more of the previous options, like the following example(default API generation behavior):
+    * "%H:%M:%S, %I:%M:%S %p, %H:%M, %I:%M %p, %I:%M:%S%p, %I:%M%p"
+
+    ⚠️ Disclaimer
+    The previous behavior affects all fields from all database tables, is is not possible at this point to specify these rules for specific table columns
+
+* **query_limit** – Global result limiting of GET requests CRUD routes can return. Default value '*' means your CRUD GET requests won't have a maximum limit and will retrieve all data from a specified query even if your pagination or query limit parameters are not set. Valid values are any integer natural numbers (greater than 0) or '*'
+
+* **display_stacktrace_on_error** – When enabled, the original Python exception appears in the JSON response when an error occurs in the request. Valid values are "True" or "False"
+
+* **origins** – Defines allowed CORS origins, separated by comma.
+
+* **headers** – Defines allowed CORS origins headers values, separated by comma.
+
+* main_db_conn - Specifies the database type (mysql, pgsql, mssql, mariadb) of the database your custom API accesses. Should not be messed around to avoid breaking the code. Valid values are: mysql, pgsql, mssql and mariadb
+
+* <PROJECT_DATABASE_TYPE>_user - User to authenticate on API's database sessions.
+
+* <PROJECT_DATABASE_TYPE>_password - Password to authenticate on API's database sessions.
+
+* <PROJECT_DATABASE_TYPE>_host - The endpoint of your database.
+
+* <PROJECT_DATABASE_TYPE>_port - Port that is allowed access to your database.
+
+* <PROJECT_DATABASE_TYPE>_schema - On MySQL, MariaDB and SQLServer, this is the name of your database. On PostgreSQL, this is the schema inside of your database.
+
+* pgsql_database_name - On PostgreSQL, this is the database name in which your selected schema resides.
