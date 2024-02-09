@@ -277,7 +277,8 @@ Insert Table Entry
 
 From the same swagger page we were in, the next route is the post /, in which when you hit "try it out" it will present you with a sample JSON body to insert an entry on your table. The JSON body sent on the request is a list, so if you wish to you can provide multiple entries at once on table with the same request, below is an example of a request inserting three entries on a simple pre-designed USER table with 'id_user', 'username' and 'date_joined' fields:
 
->> image - Swagger Insert User
+.. image:: https://camo.githubusercontent.com/df1e76abe34b8dc8f519e269af177c549f3ecb12aa573dad33b00653578a92b6/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f752f312f64726976652d7669657765722f4145596d4259534b4b566d50533543485f4f4341626f6e6f565f444a626a58713249533577477836512d4350416e346449374a6f32572d326b7831393345356c4f6733565372506d4652747a5f31473873596c643868556a54364a756167516a6b513d77323838302d6831343034
+    :alt: Swagger Insert User
 
 Example JSON payload:
 ++++++++++++++++++++
@@ -308,7 +309,8 @@ Delete Table Entry
 
 Now we're talking about the delete /user route, if you hit "try it out" it will also present you with a sample JSON body of a generic object of your table, you can then use that example, modify its values to suit an entry that exists on your database. Note that this is a delete by full match route, so you need to provide the correct values for all of the table collumns on your response, below is an example of JSON body to delete a user table entry that has 3 columns: id_user, username and date_joined:
 
->> image - Swagger Delete User
+.. image:: https://camo.githubusercontent.com/7cba8acd0c934b1b67850241197d7522218b5a576c4060af60a95e4f8623fb91/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f752f312f64726976652d7669657765722f4145596d42595469313165724a666b6e494d6762305232617579616e78645f6733346b6b6f56634e59586653354b637432305352422d6473714f6937704d524739554758565f68416169474f47764c6636434d384c514f78564d44656471474658773d77323838302d6831343034
+    :alt: Swagger Delete User
 
 .. code-block::
 
