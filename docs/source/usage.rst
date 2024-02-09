@@ -269,7 +269,12 @@ Select All Table Entries
 
 Starting with a basic use, you go to your swagger/, the first route is the get one, if you just hit "try it out" and then "execute", it will present you with a response equivalent to a SELECT * from query. If you wish to, you can use the available filters to select only the attributes that you want to retrieve, limit the number of results, paginate your results and so on. If you still did not have anything on your database to retrieve, it will just be an empty list, now we can get to our next use case to solve that!
 
->> image - Swagger Select all Users
+.. image:: https://camo.githubusercontent.com/d57632c63ee303fd01c0b13acfd5a12e55297590fff6adbed26a608b78c30299/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f752f312f64726976652d7669657765722f4145596d425952784c3868556766656e634d6c4e6a57333548503766785f5a766c68654a5575506a656643697347684475365678453248557439614f465369424d4f5370595865384a354b4b5a5a474e3530564e7438566f6c65457a5f4746773d77323838302d6831343034
+    :alt: Swagger Select all Users
+
+.. image::
+    :alt: Swagger Select all Users
+    :target: https://camo.githubusercontent.com/d57632c63ee303fd01c0b13acfd5a12e55297590fff6adbed26a608b78c30299/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f752f312f64726976652d7669657765722f4145596d425952784c3868556766656e634d6c4e6a57333548503766785f5a766c68654a5575506a656643697347684475365678453248557439614f465369424d4f5370595865384a354b4b5a5a474e3530564e7438566f6c65457a5f4746773d77323838302d6831343034
 
 Insert Table Entry
 ^^^^^^^^^^^^^^^^^^
