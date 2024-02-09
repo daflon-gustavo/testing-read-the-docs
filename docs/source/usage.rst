@@ -62,8 +62,8 @@ As of now, pythonrest may fail on installation or present some errors when tryin
 
    After a successful installation of pymssql, you can then proceed with the installation of pythonrest using pip
 
-Guide
------
+PythonREST CLI Usage
+--------------------
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -155,8 +155,8 @@ This behavior can be modified on the project's environment variables file(src/e_
 * "%Y-%m-%d, %d-%m-%Y, %Y/%m/%d, %d/%m/%Y" -> This value accepts dates on YYYY-MM-DD, DD-MM-YYYY, YYYY/MM/DD and DD/MM/YYYY formats
 * "%Y-%m-%d, %m-%d-%Y, %Y/%m/%d, %m/%d/%Y" -> This value accepts dates on YYYY-DD-MM, MM-DD-YYYY, YYYY/DD/MM and MM/DD/YYYY formats
 
-How to Run Generated API
-------------------------
+Generated API Usage
+-------------------
 
 After generating your API, you may open it on your preferred IDE(VSCode, PyCharm, etc) or even the bash/cmd if you wish to, from there you may build your venv like below to run the project.
 
@@ -325,3 +325,43 @@ Now we're talking about the delete /user route, if you hit "try it out" it will 
 
 For more detailed examples, please check our `blog <https://medium.com/@seventechnologiescloud/>`_
 
+Swagger Overview
+----------------
+
+When running the API, it will provide you with a localhost url, then you have the following swagger pages accessible:
+
+/swagger
+~~~~~~~~
+
+That's the base route for viewing swagger, it contains the documentation of the SQL routes present on the application
+
+.. image:: https://lh3.googleusercontent.com/u/1/drive-viewer/AEYmBYR_dUffHUELqs1yay5iiqu0ltnAtbLqtPgjwjpsHv5IRhCRfZuhv0B5qVvPG5ZHm0ThT08xu99zsZuCRMblvjuFSasp=w2880-h1508
+    :alt: Swagger Main Screen
+
+/swagger/tablename
+~~~~~~~~~~~~~~~~~~
+
+For each table on your database, PythonREST creates an openapi page documentation for it, in which you can make your database queries targetting each table. To access them, simply append to the swagger endpoint url your table name in *flatcase* (**ALL WORDS TOGETHER IN LOWER CASE WITH NO SEPARATORS**).
+
+.. image:: https://lh3.googleusercontent.com/u/1/drive-viewer/AEYmBYRfUGgCAiU0KSLZJjLGttaIuBCf5vRNWa8ioShBm7KQtm_EkwwLSHiW-G2hZbi-25SH-x_HtkLKjizLfxafbYMnJ-D0uA=w2880-h1508
+    :alt: Swagger User Screen
+
+Postman/cURL
+------------
+
+If you're familiar with Postman or using cURL requests directly, you can make requests to the routes shown in the open api specification, using the examples of usage present on it to build your request.
+For example, a table user with id_user, username and date_joined fields would have a POST cURL request like:
+
+.. code-block::
+
+   curl -X 'POST' \
+     'http://localhost:5000/user' \
+     -H 'accept: application/json' \
+     -H 'Content-Type: application/json' \
+     -d '[
+     {
+       "id_user": 1,
+       "username": "first_user",
+       "date_joined": "2024-01-01 12:00:00"
+     }
+   ]'

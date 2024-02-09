@@ -10,7 +10,7 @@ THIS WILL SAVE YOU MONTHS OF DEVELOPMENT TIME, GUARANTEED!
 
 Your new generated API will have full CRUD compatibility with your mapped database and full swagger documentation and specs available. With your new API in hand, you will be able to containerize or serverless deploy it to any local, private and public cloud providers of your choice and use it at will! If you're interested in taking your API to the next level and don't know how, please inquiry us on the email below for consultancies.
 
-This project is under active enhancement and we have several open GitHub issues so we can improve it even further, if you're an Open Source enthusiast and wish to contribute, we'd be more than happy to have you on our team! Get in touch via admin@seventechnologies if you have any doubts or suggestions and don't forget to star rate `our repo<https://github.com/seven-technologies-cloud/pythonrest>`_!
+This project is under active enhancement and we have several open GitHub issues so we can improve it even further, if you're an Open Source enthusiast and wish to contribute, we'd be more than happy to have you on our team! Get in touch via admin@seventechnologies if you have any doubts or suggestions and don't forget to star rate `our repo <https://github.com/seven-technologies-cloud/pythonrest>`_!
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
