@@ -589,10 +589,10 @@ executables on PythonRestExecutables/ directory, which you can then run to insta
 machine.
 
 Linux/Mac
----------
+~~~~~~~~~
 
 Building the CLI binary
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Run from the root folder:
 
