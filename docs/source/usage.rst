@@ -6,7 +6,7 @@ Usage
 Installation
 ------------
 
-To begin working with PythonREST, you can visit our `website's download page<https://pythonrest.seventechnologies.cloud/en/download>`_ and download the installer for your system or if you're more familiar with package managers, we have options for that below.
+To begin working with PythonREST, you can visit our `website's download page <https://pythonrest.seventechnologies.cloud/en/download>`_ and download the installer for your system or if you're more familiar with package managers, we have options for that below.
 
 Chocolatey
 ~~~~~~~~~~
@@ -745,7 +745,7 @@ All of this must be done to successfully add those files to the pip generated an
 To uninstall the local pip package, you can just use a common pip uninstall command:
 
 .. code-block::
-   
+
    pip uninstall pythonrest
 
 When reinstalling the local pip package for tests, make sure to delete the build folder generated on the root folder of the project,
@@ -754,6 +754,6 @@ the project files.
 
 .. note::
 
-* If you find our solution helpful, consider donating on our `Patreon campaign <https://www.patreon.com/seventechnologiescloud>`_!
-* Thank you for riding with us! Feel free to use and contribute to our project. PythonREST CLI Tool generates a COMPLETE API for a relational database based on a connection string. It reduces your API development time by 40-60% and it's OPEN SOURCE!
-* Don't forget to star rate `our repo <https://github.com/seven-technologies-cloud/pythonrest>`_ if you like our job!
+   * If you find our solution helpful, consider donating on our `Patreon campaign <https://www.patreon.com/seventechnologiescloud>`_!
+   * Thank you for riding with us! Feel free to use and contribute to our project. PythonREST CLI Tool generates a COMPLETE API for a relational database based on a connection string. It reduces your API development time by 40-60% and it's OPEN SOURCE!
+   * Don't forget to star rate `our repo <https://github.com/seven-technologies-cloud/pythonrest>`_ if you like our job!
