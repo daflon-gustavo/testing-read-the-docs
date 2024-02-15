@@ -111,7 +111,7 @@ Generate APIs based on Aurora Postgres databases:
 Custom options
 ~~~~~~~~~~~~~~
 
-**--result-path**:
+\*\*--result-path\*\*:
 By default, PythonREST will generate the API on your current directory under a PythonRestAPI folder. To define a custom path to your generated API please follow the example below:
 
 .. code-block::
@@ -136,14 +136,14 @@ Disclaimer
 
 Keep in mind that the provided folder will have all of its files deleted before generating the API, except when a PythonREST project is already in place
 
-**--use-pascal-case**:
+\*\*--use-pascal-case\*\*:
 This option creates the Python Domain Classes with PascalCase pattern for their names, if this option is provided as --no-use-pascal-case, you will be prompted to provide a name of python class for each table of your database:
 
 .. code-block::
 
    pythonrest generate --mysql-connection-string <MYSQL_CONNECTION_STRING> --no-use-pascal-case
 
-**--us-datetime**:
+\*\*--us-datetime\*\*:
 If you have a database with datetime formatted to the us pattern of mm-dd-yyyy, you can use this option so that the api will also respect that pattern when validating requests and responses:
 
 .. code-block::
@@ -370,21 +370,21 @@ API Environment Variables
 -------------------------
 
 Generated API environment variables can be found on src/e_Infra/g_Environment/EnvironmentVariables.py and each one has the following utility:
-* **domain_like_left** – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "%COLUMN_VALUE" search behavior whenever it's value is defined on a query parameter.
+* \*\*domain_like_left\*\* – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "%COLUMN_VALUE" search behavior whenever it's value is defined on a query parameter.
 Example:
     * Test
     * 1Test
     * NameTest
     * Example-Test
 
-* **domain_like_right** – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "COLUMN_VALUE%" search behavior whenever it's value is defined on a query parameter.
+* \*\*domain_like_right\*\* – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "COLUMN_VALUE%" search behavior whenever it's value is defined on a query parameter.
 Example:
     * Test
     * Test1
     * Test Name
     * Test-Example
 
-* **domain_like_full** – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "%COLUMN_VALUE%" search behavior whenever a it's value is defined on a query parameter.
+* \*\*domain_like_full\*\* – Defines SQL's "LIKE" operator's behavior in relation to specified table columns. Columns defined here will have "%COLUMN_VALUE%" search behavior whenever a it's value is defined on a query parameter.
 Example:
     * Test
     * Test1
@@ -394,7 +394,7 @@ Example:
     * NameTest
     * Example-Test
 
-* **date_valid_masks** – Specifies the date formats accepted by the API. Valid values are:
+* \*\*date_valid_masks\*\* – Specifies the date formats accepted by the API. Valid values are:
     * "%Y-%m-%d" - This value accepts dates on YYYY-MM-DD format
     * "%d-%m-%Y" - This value accepts dates on DD-MM-YYYY format
     * "%Y/%m/%d" - This value accepts dates on YYYY/MM/DD format
@@ -408,7 +408,7 @@ Example:
     ⚠️ Disclaimer
     The previous behavior affects all fields from all database tables, is is not possible at this point to specify these rules for specific table columns
 
-* **time_valid_masks** – Specifies the time formats accepted by the API. Valid values are:
+* \*\*time_valid_masks\*\* – Specifies the time formats accepted by the API. Valid values are:
     * "%H:%M:%S" This value accepts times on HH:MM:SS format
     * "%I:%M:%S %p" This value accepts times on HH:MM:SS AM/PM format 
     * "%H:%M" This value accepts times on HH:MM format
@@ -421,13 +421,13 @@ Example:
     ⚠️ Disclaimer
     The previous behavior affects all fields from all database tables, is is not possible at this point to specify these rules for specific table columns
 
-* **query_limit** – Global result limiting of GET requests CRUD routes can return. Default value '*' means your CRUD GET requests won't have a maximum limit and will retrieve all data from a specified query even if your pagination or query limit parameters are not set. Valid values are any integer natural numbers (greater than 0) or '*'
+* \*\*query_limit\*\* – Global result limiting of GET requests CRUD routes can return. Default value '*' means your CRUD GET requests won't have a maximum limit and will retrieve all data from a specified query even if your pagination or query limit parameters are not set. Valid values are any integer natural numbers (greater than 0) or '*'
 
-* **display_stacktrace_on_error** – When enabled, the original Python exception appears in the JSON response when an error occurs in the request. Valid values are "True" or "False"
+* \*\*display_stacktrace_on_error\*\* – When enabled, the original Python exception appears in the JSON response when an error occurs in the request. Valid values are "True" or "False"
 
-* **origins** – Defines allowed CORS origins, separated by comma.
+* \*\*origins\*\* – Defines allowed CORS origins, separated by comma.
 
-* **headers** – Defines allowed CORS origins headers values, separated by comma.
+* \*\*headers\*\* – Defines allowed CORS origins headers values, separated by comma.
 
 * main_db_conn - Specifies the database type (mysql, pgsql, mssql, mariadb) of the database your custom API accesses. Should not be messed around to avoid breaking the code. Valid values are: mysql, pgsql, mssql and mariadb
 
@@ -442,3 +442,4 @@ Example:
 * <PROJECT_DATABASE_TYPE>_schema - On MySQL, MariaDB and SQLServer, this is the name of your database. On PostgreSQL, this is the schema inside of your database.
 
 * pgsql_database_name - On PostgreSQL, this is the database name in which your selected schema resides.
+
