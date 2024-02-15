@@ -98,14 +98,17 @@ Generate APIs based on SQLServer databases:
 Generate APIs based on DariaDB databases:
 
 .. code-block::
+
    pythonrest generate --mariadb-connection-string mariadb://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<SCHEMA>
 
 Generate APIs based on Aurora MySQL databases:
 .. code-block::
+
    pythonrest generate --mysql-connection-string mysql://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<SCHEMA>
 
 Generate APIs based on Aurora Postgres databases:
 .. code-block::
+
    pythonrest generate --postgres-connection-string postgresql://<USER>:<PASSWORD>@<ENDPOINT>:<PORT>/<DATABASE_NAME>?options=-c%20search_path=<SCHEMA>,public
 
 Custom options
@@ -115,6 +118,7 @@ Custom options
 By default, PythonREST will generate the API on your current directory under a PythonRestAPI folder. To define a custom path to your generated API please follow the example below:
 
 .. code-block::
+
    pythonrest generate --mysql-connection-string <mysql_connection_string> --result-path C:\<YOUR_DESIRED_PATH_HERE>
 
 The command above will generate your API on the provided path, and if the folder does not exist the generator will create i. The following folders/files will be modified(content deleted and recreated) if a PythonREST project is already in place:
@@ -498,6 +502,7 @@ Windows
 ^^^^^^^
 
 .. code-block::
+
    pip install -r requirements.txt
 
 
@@ -505,6 +510,7 @@ Linux/Mac
 ^^^^^^^^^
 
 .. code-block::
+
    sudo pip install -r requirements.txt
 
 
@@ -520,6 +526,7 @@ Building the CLI exe
 Run from the root folder:
 
 .. code-block::
+
    pyinstaller --onefile
        --add-data "pythonrest.py;."
        --add-data "databaseconnector;databaseconnector"
@@ -545,6 +552,7 @@ Known Issues:
 When using pyinstaller with typing installed it generates the following error:
 
 .. code-block::
+
    The 'typing' package is an obsolete backport of a standard library package and is incompatible with PyInstaller. Please remove this package
 
 Just removing the package and retrying fixes that error.
@@ -555,6 +563,7 @@ Building the Installer exe
 Move the pythonrest.exe file from the generated dist/ folder to the windowsinstaller/ folder and run from the latter folder:
 
 .. code-block::
+
    pyinstaller ^
    --onefile ^
    --add-data "pythonrest.exe;."
@@ -569,6 +578,7 @@ Building the Uninstaller exe
 Run from the windowsinstaller folder:
 
 .. code-block::
+
    pyinstaller
    --onefile
    --add-data "uninstall_pythonrest.py;."
@@ -582,6 +592,7 @@ Build exe, installer and uninstaller
 run from windowsinstaller/ folder:
 
 .. code-block::
+
    .\generate_pythonrest_executables.ps1
 
 This will take care of running the above pyinstaller commands and it will generate both installer and uninstaller 
@@ -597,6 +608,7 @@ Building the CLI binary
 Run from the root folder:
 
 .. code-block::
+
    pyinstaller --onefile \
        --add-data "pythonrest.py:." \
        --add-data "databaseconnector:databaseconnector" \
@@ -622,6 +634,7 @@ Known Issues:
 When using pyinstaller with typing installed it generates the following error:
 
 .. code-block::
+
    The 'typing' package is an obsolete backport of a standard library package and is incompatible with PyInstaller. Please remove this package
 
 Just removing the package and retrying fixes that error.
@@ -632,6 +645,7 @@ Building the Installer binary
 Move the pythonrest file from the generated dist/ folder to the linuxinstaller/ or macinstaller/ folder and run from it:
 
 .. code-block::
+
    pyinstaller \
        --onefile \
        --add-data "pythonrest:." \
@@ -646,6 +660,7 @@ Building the Uninstaller binary
 Run from the linuxinstaller/ or macinstaller/ folder:
 
 .. code-block::
+
    pyinstaller \
        --onefile \
        --add-data "uninstall_pythonrest.py:." \
@@ -658,12 +673,14 @@ Build pythonrest, installer and uninstaller
 Go to linuxinstaller/ or macinstaller/ folder and from it add execute permission on the script:
 
 .. code-block::
+
    chmod +x ./generate_pythonrest_executables.sh
 
 
 Execute the script:
 
 .. code-block::
+
    ./generate_pythonrest_executables.sh
 
 This will take care of running the above pyinstaller commands, and it will generate both installer and uninstaller 
@@ -671,6 +688,7 @@ binaries on PythonRestExecutables/ directory, which you can then run to install 
 machine, like below:
 
 .. code-block::
+
    ./PythonRESTInstaller
    ./PythonRESTUninstaller
 
@@ -678,6 +696,7 @@ Known Issues:
 When executing ./generate_pythonrest_executables.sh, there is a possibility that something like this issue occurs:
 
 .. code-block::
+
    ./generate_pythonrest_executables.sh: line 2: $'\r': command not found                                                   
    ./generate_pythonrest_executables.sh: line 3: syntax error near unexpected token `$'{\r''                                
    '/generate_pythonrest_executables.sh: line 3: `function write_log() {   
@@ -688,6 +707,7 @@ characters can cause issues. To fix it you can install and run dos2unix in all o
 folder:
 
 .. code-block::
+
    sudo apt-get update
    sudo apt-get install dos2unix
    dos2unix generate_pythonrest_executables.sh
@@ -701,6 +721,7 @@ Build and install pythonrest local pip package
 Run from the root folder:
 
 .. code-block::
+
    pip install .
 
 This will use the setup.py from the root folder to build a library of the pythonrest on the site-packages
@@ -709,6 +730,7 @@ One thing worth noting is that if you need to add a new folder to the project, e
 you need to add a new entry to the list of the packages property in the setup.py, like this:
 
 .. code-block::
+
    'pythonrest.apigenerator.c_NewFolder',
 
 And if that folder has files that are not of .py extension, e.g. apigenerator/c_NewFolder/new.yaml and 
@@ -716,18 +738,22 @@ apigenerator/c_NewFolder/new2.yaml, you need to add a new entry to the list of t
 setup.py, like this:
 
 .. code-block::
+
    'pythonrest.apigenerator.c_NewFolder': ['new.yaml', 'new2.yaml'],
 
 All of this must be done to successfully add those files to the pip generated and installed library
 To uninstall the local pip package, you can just use a common pip uninstall command:
 
 .. code-block::
+   
    pip uninstall pythonrest
 
 When reinstalling the local pip package for tests, make sure to delete the build folder generated on the root folder of the project,
 as retaining that folder can lead to the project being built using that folder and not catching any changes you made to
 the project files.
 
-* **If you find our solution helpful, consider donating on our `Patreon campaign <https://www.patreon.com/seventechnologiescloud>`_!**
-* **Thank you for riding with us! Feel free to use and contribute to our project. PythonREST CLI Tool generates a COMPLETE API for a relational database based on a connection string. It reduces your API development time by 40-60% and it's OPEN SOURCE!**
-* **Don't forget to star rate `our repo <https://github.com/seven-technologies-cloud/pythonrest>`_ if you like our job!**
+.. note::
+
+* If you find our solution helpful, consider donating on our `Patreon campaign <https://www.patreon.com/seventechnologiescloud>`_!
+* Thank you for riding with us! Feel free to use and contribute to our project. PythonREST CLI Tool generates a COMPLETE API for a relational database based on a connection string. It reduces your API development time by 40-60% and it's OPEN SOURCE!
+* Don't forget to star rate `our repo <https://github.com/seven-technologies-cloud/pythonrest>`_ if you like our job!
