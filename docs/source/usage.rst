@@ -443,3 +443,291 @@ Example:
 
 * pgsql_database_name - On PostgreSQL, this is the database name in which your selected schema resides.
 
+Generated API Directory Structure
+---------------------------------
+
+The generated API has a structure of a number of directories with sub-directories. This section will explain that division in order to enlighten the project for debugging and feature implementations. Taking from the root of the generated project, we have:
+- config/: This directory contains all of the swagger files of the project, the main one and each database table swagger page.
+- src/a_Presentation: This directory houses the controllers of the project, the files which are responsible for defining the routes of the project, creating functions for each route and defining the parameters used by them
+  - src/a_Presentation/a_Domain: Contains the controllers for all of the domains of the project, which are the tables scanned by PythonREST of your database.
+  - src/a_Presentation//b_Custom: Contains controllers of other sections of the project, like the SQL routes controllers, OPTIONS method conrollers(that deals with CORS and its related stuff), before request controller, which prints the request on terminal and exception handler controller, which prints the error on terminal and calls a function to build the response error to be returned as a response
+  - src/a_Presentation/d_Swagger: Contains the swagger routes controllers, which notifies the project which swagger file it should open when determined route is accessed.
+- src/b_Application: This directory houses the services and DTOs of the project.
+  - src/b_Application/a_DTO: This directory houses any custom DTOs(Data Transfer Objects are a structured and serializable object used to encapsulate and transport data between layers of an application or between different parts of a distributed system) that would be created for the project, separated by request(src/b_Application/a_DTO/a_Request) and response(src/b_Application/a_DTO-b_Response)
+  - src/b_Application/b_Service: The service files are contained here, which are the files responsible for data manipulation, validation, and communication with external systems.
+    - src/b_Application/b_Service/a_Domain: All of the service files for the domains are contained here
+    - src/b_Application/b_Service/b_Custom: All of the sql routes, before request and error handler services are contained here.
+- src/c_Domain: Contains all the main classes of the project domains, which define how each table is structured.
+- src/d_Repository: This directory houses the repositories of the project, they are the data access layer responsible for handling database interactions and they are involved in doing the direct CRUD (Create, Read, Update, Delete) operations on data entities.
+- src/d_Repository/GenericRepository.py: Contains functions responsible for each of the routes transactions, selecting objects(by id or just a select all), inserting objects, updating objects and deleting objects(by id or by full match) and applies necessary business logics or functionalities before executing the queries on the database.
+    - src/d_Repository/a_Domain: This directory contains files for each table, in which you can set your custom repositories for each one separately.
+    - src/d_Repository/b_Transactions: Contains functions responsible for each of the routes transactions, selecting objects(by id or just a select all), inserting objects, updating objects and deleting objects(by id or by full match) and on these calls the methods of the GenericRepository.py
+    - src/d_Repository/d_DbConnection: Contains the function responsible for creating a connection string to the database accessed by the project.
+- src/e_Infra: Contains files or components that deal with the foundational structure, setup and configuration of the project.
+  - src/e_Infra/a_Handlers: Contains files used to configure exceptions and system messages returned by the API
+  - src/e_Infra/b_Builders: Contains files used to configure and build date times, domain objects, flask, proxy responses, sql alchemy, strings
+    - src/e_Infra/b_Builders/a_Swagger: Contains the functions to build the Swagger blueprints that renders the Swagger page.
+  - src/e_Infra/c_Resolvers: Contains functions to deal with some logics and operations like creation of engine and session of a connected database and filtering queries with left like, right lke and the such.
+  - src/e_Infra/d_Validators: Contains functions that validates if given requests have correct data, like JSON bodies, datetimes values, types of table parameters.
+  - src/e_Infra/d_Validators/a_Domain: Contains functions for each domain in which custom validators can be set.
+  - src/e_Infra/f_Decorators: Contains decorator functions, which modify or extend the behavior of functions by wrapping them with additional functionality.
+  - src/e_Infra/g_Environment: Contains the environment variables used by the project.
+  - src/e_Infra/CustomVariables.py: Contains functions to return custom values used by the code, like empty dicts, empty lists and more.
+  - src/e_Infra/GlobalVariablesManager.py: Contains a function to call the environment variables if they exist or None if they don't.
+  - src/g_Tests: Directory to store the UnitTests created to test the project's functionalities. 
+
+Requirements
+~~~~~~~~~~~~
+
+Already listed within ./requirements.txt
+
+- 'typer==0.9.0',
+- 'PyYAML==6.0.1'
+- 'parse==1.20.0'
+- 'mergedeep==1.3.4'
+- 'pymysql==1.1.0'
+- 'psycopg2==2.9.9'
+- 'psycopg2-binary==2.9.9'
+- 'pymssql==2.2.10'
+- 'pyinstaller==6.3.0'
+
+To run and build this project, you need to have the above libraries installed on your machine, which you can do running 
+the below command on the project root directory:
+
+Windows
+^^^^^^^
+
+.. code-block::
+   pip install -r requirements.txt
+
+
+Linux/Mac
+^^^^^^^^^
+
+.. code-block::
+   sudo pip install -r requirements.txt
+
+
+For Contributors: How to Build Your Own Binaries and Installers
+---------------------------------------------------------------
+
+Windows
+~~~~~~~
+
+Building the CLI exe
+^^^^^^^^^^^^^^^^^^^^
+
+Run from the root folder:
+
+.. code-block::
+   pyinstaller --onefile
+       --add-data "pythonrest.py;."
+       --add-data "databaseconnector;databaseconnector"
+       --add-data 'domaingenerator;domaingenerator'
+       --add-data 'apigenerator;apigenerator'
+       --collect-submodules typing
+       --collect-submodules re
+       --collect-submodules typer
+       --collect-submodules yaml
+       --collect-submodules parse
+       --collect-submodules mergedeep
+       --collect-submodules site
+       --collect-submodules pymysql
+       --collect-submodules psycopg2
+       --collect-submodules psycopg2-binary
+       --collect-submodules pymssql
+       --icon=pythonrestlogo.ico
+       pythonrest.py
+
+it will generate a dist folder with the pythonrest.exe file 
+
+Known Issues:
+When using pyinstaller with typing installed it generates the following error:
+
+.. code-block::
+   The 'typing' package is an obsolete backport of a standard library package and is incompatible with PyInstaller. Please remove this package
+
+Just removing the package and retrying fixes that error.
+
+Building the Installer exe
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Move the pythonrest.exe file from the generated dist/ folder to the windowsinstaller/ folder and run from the latter folder:
+
+.. code-block::
+   pyinstaller ^
+   --onefile ^
+   --add-data "pythonrest.exe;."
+   --add-data "install_pythonrest.py;."
+   --add-data "addpythonresttouserpath.ps1;."
+   --icon=../pythonrestlogo.ico
+   --name PythonRESTInstaller install_pythonrest.py
+
+Building the Uninstaller exe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run from the windowsinstaller folder:
+
+.. code-block::
+   pyinstaller
+   --onefile
+   --add-data "uninstall_pythonrest.py;."
+   --add-data "removepythonrestfromuserpath.ps1;."
+   --icon=../pythonrestlogo.ico
+   --name PythonRESTUninstaller uninstall_pythonrest.py
+
+Build exe, installer and uninstaller
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+run from windowsinstaller/ folder:
+
+.. code-block::
+   .\generate_pythonrest_executables.ps1
+
+This will take care of running the above pyinstaller commands and it will generate both installer and uninstaller 
+executables on PythonRestExecutables/ directory, which you can then run to install and/or uninstall the cli on your
+machine.
+
+Linux/Mac
+---------
+
+Building the CLI binary
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Run from the root folder:
+
+.. code-block::
+   pyinstaller --onefile \
+       --add-data "pythonrest.py:." \
+       --add-data "databaseconnector:databaseconnector" \
+       --add-data 'domaingenerator:domaingenerator' \
+       --add-data 'apigenerator:apigenerator' \
+       --collect-submodules typing \
+       --collect-submodules re \
+       --collect-submodules typer \
+       --collect-submodules yaml \
+       --collect-submodules parse \
+       --collect-submodules mergedeep \
+       --collect-submodules site \
+       --collect-submodules pymysql \
+       --collect-submodules psycopg2 \
+       --collect-submodules psycopg2-binary \
+       --collect-submodules pymssql \
+       pythonrest.py
+
+
+it will generate a dist folder with the pythonrest file 
+
+Known Issues:
+When using pyinstaller with typing installed it generates the following error:
+
+.. code-block::
+   The 'typing' package is an obsolete backport of a standard library package and is incompatible with PyInstaller. Please remove this package
+
+Just removing the package and retrying fixes that error.
+
+Building the Installer binary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Move the pythonrest file from the generated dist/ folder to the linuxinstaller/ or macinstaller/ folder and run from it:
+
+.. code-block::
+   pyinstaller \
+       --onefile \
+       --add-data "pythonrest:." \
+       --add-data "install_pythonrest.py:." \
+       --add-data "addpythonresttouserpath.sh:." \
+       --name PythonRESTInstaller install_pythonrest.py
+
+
+Building the Uninstaller binary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run from the linuxinstaller/ or macinstaller/ folder:
+
+.. code-block::
+   pyinstaller \
+       --onefile \
+       --add-data "uninstall_pythonrest.py:." \
+       --add-data "removepythonrestfromuserpath.sh:." \
+       --name PythonRESTUninstaller uninstall_pythonrest.py
+
+Build pythonrest, installer and uninstaller
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Go to linuxinstaller/ or macinstaller/ folder and from it add execute permission on the script:
+
+.. code-block::
+   chmod +x ./generate_pythonrest_executables.sh
+
+
+Execute the script:
+
+.. code-block::
+   ./generate_pythonrest_executables.sh
+
+This will take care of running the above pyinstaller commands, and it will generate both installer and uninstaller 
+binaries on PythonRestExecutables/ directory, which you can then run to install and/or uninstall the cli on your
+machine, like below:
+
+.. code-block::
+   ./PythonRESTInstaller
+   ./PythonRESTUninstaller
+
+Known Issues:
+When executing ./generate_pythonrest_executables.sh, there is a possibility that something like this issue occurs:
+
+.. code-block::
+   ./generate_pythonrest_executables.sh: line 2: $'\r': command not found                                                   
+   ./generate_pythonrest_executables.sh: line 3: syntax error near unexpected token `$'{\r''                                
+   '/generate_pythonrest_executables.sh: line 3: `function write_log() {   
+
+That issue is due to a difference in line endings between Windows (CRLF - Carriage Return and Line Feed) and Linux/Unix
+(LF - Line Feed) systems. When you transfer or use scripts created on Windows in a Linux environment, these line ending 
+characters can cause issues. To fix it you can install and run dos2unix in all of the sh files of the linuxinstaller
+folder:
+
+.. code-block::
+   sudo apt-get update
+   sudo apt-get install dos2unix
+   dos2unix generate_pythonrest_executables.sh
+   dos2unix addpythonresttouserpath.sh
+   dos2unix removepythonrestfromuserpath.sh
+
+
+Build and install pythonrest local pip package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run from the root folder:
+
+.. code-block::
+   pip install .
+
+This will use the setup.py from the root folder to build a library of the pythonrest on the site-packages
+of the Python folder.
+One thing worth noting is that if you need to add a new folder to the project, e.g. apigenerator/c_NewFolder
+you need to add a new entry to the list of the packages property in the setup.py, like this:
+
+.. code-block::
+   'pythonrest.apigenerator.c_NewFolder',
+
+And if that folder has files that are not of .py extension, e.g. apigenerator/c_NewFolder/new.yaml and 
+apigenerator/c_NewFolder/new2.yaml, you need to add a new entry to the list of the package_data property in the 
+setup.py, like this:
+
+.. code-block::
+   'pythonrest.apigenerator.c_NewFolder': ['new.yaml', 'new2.yaml'],
+
+All of this must be done to successfully add those files to the pip generated and installed library
+To uninstall the local pip package, you can just use a common pip uninstall command:
+
+.. code-block::
+   pip uninstall pythonrest
+
+When reinstalling the local pip package for tests, make sure to delete the build folder generated on the root folder of the project,
+as retaining that folder can lead to the project being built using that folder and not catching any changes you made to
+the project files.
+
+* **If you find our solution helpful, consider donating on our `Patreon campaign <https://www.patreon.com/seventechnologiescloud>`_!**
+* **Thank you for riding with us! Feel free to use and contribute to our project. PythonREST CLI Tool generates a COMPLETE API for a relational database based on a connection string. It reduces your API development time by 40-60% and it's OPEN SOURCE!**
+* **Don't forget to star rate `our repo <https://github.com/seven-technologies-cloud/pythonrest>`_ if you like our job!**
