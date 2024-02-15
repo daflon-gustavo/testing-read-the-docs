@@ -15,6 +15,8 @@ Chocolatey
 
    choco install pythonrest --version=0.1.0
 
+.. copybutton::
+
 Pip
 ~~~~~~~~~~
 
