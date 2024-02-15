@@ -1,5 +1,9 @@
+import sys
+import os
 from docutils import nodes
 from docutils.parsers.rst import Directive
+
+sys.path.insert(0, os.path.abspath('.'))
 
 class CopyButton(Directive):
     has_content = True
