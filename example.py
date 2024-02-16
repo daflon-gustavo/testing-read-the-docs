@@ -1,5 +1,5 @@
 """
-Lumache - Python library for cooks and food lovers.
+Example - This is a test for using autosummary.
 """
 
 __version__ = "0.1.0"
