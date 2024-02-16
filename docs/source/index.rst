@@ -27,4 +27,3 @@ Contents
    presentation
    usage
    api
-   test
