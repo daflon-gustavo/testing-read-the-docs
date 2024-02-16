@@ -16,7 +16,7 @@ def get_random_ingredients(kind=None):
 
     :param kind: Optional "kind" of ingredients.
     :type kind: list[str] or None
-    :raise lumache.InvalidKindError: If the kind is invalid.
+    :raise example.InvalidKindError: If the kind is invalid.
     :return: The ingredients list.
     :rtype: list[str]
     """
