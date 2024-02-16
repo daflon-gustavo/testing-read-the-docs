@@ -2,6 +2,12 @@ API
 ===
 
 .. autosummary::
-   :toctree: generated
 
-   example
+   :recursive:
+
+   sphinx.environment.BuildEnvironment
+
+..    :toctree: generated
+
+..    example
+
