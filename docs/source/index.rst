@@ -1,7 +1,7 @@
 Welcome to Python REST's documentation!
 ===================================
 
-.. image:: https://drive.google.com/file/d/1FMzeZQL2JpKmkODdIcLVTSQC149rvFEg/view?usp=sharing
+.. image:: https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYQaGLdP44igBcrFUpCFt2Fxa3E_fk1p8cmMDx2FmKCF9oWUKMxvgOZEYE7EOJD1mCRi8dFDhF-HpdY90PQQ5r6tXdqo=w1920-h922
     :alt: PythonREST logo
 
 **PythonREST** is the ultimate full API generator for Python language. Based on the best performing frameworks and software development best practices, PythonREST can create an entire **CRUD API** in minutes or seconds based on your relational database on a single CLI command. This allows you to create your APIs from scratch and update your current API previously created with our tool to always match your latest database definitions.
