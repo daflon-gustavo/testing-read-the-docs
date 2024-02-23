@@ -26,4 +26,4 @@ Contents
 .. toctree::
    presentation
    usage
-   api
+   cli_commands
